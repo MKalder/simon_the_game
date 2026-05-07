@@ -1,0 +1,77 @@
+.simon-board {
+    margin-top: 4.5rem;
+    position: relative;
+    width: min(380px, calc(100vw - 3rem));
+    aspect-ratio: 1;
+}
+
+.play-btn {
+    border: 1px solid red;
+    position: absolute;
+    width: calc(50% - 6px);
+    height: calc(50% - 6px);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: filter var(--transition-game), transform var(--transition-game), box-shadow var(--transition-game);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.green {
+    top: 0;
+    left: 0;
+    background-color: green;
+    border-top-left-radius: 48%;
+    border-top-right-radius: 8%;
+    border-bottom-right-radius: 8%;
+    border-bottom-left-radius: 8%;
+}
+
+.red {
+    top: 0;
+    right: 0;
+    background-color: red;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 48%;
+    border-bottom-right-radius: 8%;
+    border-bottom-left-radius: 8%;
+}
+
+.yellow {
+    bottom: 0;
+    left: 0;
+    background-color: yellow;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 8%;
+    border-bottom-right-radius: 8%;
+    border-bottom-left-radius: 48%;
+}
+
+.blue {
+    bottom: 0;
+    right: 0;
+    background-color: blue;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 8%;
+    border-bottom-right-radius: 48%;
+    border-bottom-left-radius: 8%;
+}
+
+.board-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28%;
+    height: 28%;
+    background: var(--color-bg);
+    border-radius: 50%;
+    z-index: 10;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 6px var(--color-surface), inset 0 2px 8px rgba(0, 0, 0, 0.5);
+
+}
