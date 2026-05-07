@@ -1,0 +1,71 @@
+:root {
+    /* COLORS */
+
+    /* MAIN-COLORS */
+    --color-bg: #0d1117;
+    --color-text: #e6edf3;
+
+    /* PARAGRAPH */
+    --color-text-muted: #8b949e;
+    --color-text-faint: #484f58;
+
+    /* DOT COLORS */
+    --green-dim: #1a4a1a;
+    --green-lit: #22dd44;
+    --green-glow: rgba(34, 221, 68, 0.6);
+
+    --red-dim: #4a1a1a;
+    --red-lit: #ff3333;
+    --red-glow: rgba(255, 51, 51, 0.6);
+
+    --yellow-dim: #4a3d00;
+    --yellow-lit: #ffdd00;
+    --yellow-glow: rgba(255, 221, 0, 0.6);
+
+    --blue-dim: #0a1a4a;
+    --blue-lit: #3388ff;
+    --blue-glow: rgba(51, 136, 255, 0.6);
+
+    --color-surface: #161b22;
+    --color-surface-2: #1c2128;
+    --color-border: rgba(255, 255, 255, 0.08);
+
+
+    --transition-game: 120ms ease-out;
+
+
+    /* MAIN-FONT */
+    --font-game: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* SPACES */
+    --radius-full: 9999px;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+
+
+
+
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: var(--space-6);
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}

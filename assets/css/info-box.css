@@ -1,0 +1,48 @@
+.info-box {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: var(--space-3) var(--space-6);
+    gap: var(--space-4);
+
+}
+
+.info-element {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 2px;
+}
+
+.info-element h2 {
+    margin-bottom: 0;
+    padding: 0;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.2rem;
+    font-size: 0.70rem;
+    color: var(--color-text-muted);
+}
+
+.info-element p {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    font-family: var(--font-game);
+    color: var(--blue-lit);
+    font-size: 17px;
+
+}
+
+.info-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--color-border);
+}
