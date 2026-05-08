@@ -24,10 +24,16 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+.play-btn.disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
 .green {
     top: 0;
     left: 0;
-    background-color: green;
+    background: var(--green-dim);
+    box-shadow: var(--shadow-btn);
     border-top-left-radius: var(--r-outer);
     border-top-right-radius: var(--r-inner);
     border-bottom-right-radius: var(--r-inner);
@@ -37,7 +43,8 @@
 .red {
     top: 0;
     right: 0;
-    background-color: red;
+    background-color: var(--red-dim);
+    box-shadow: var(--shadow-btn);
     border-top-left-radius: var(--r-inner);
     border-top-right-radius: var(--r-outer);
     border-bottom-right-radius: var(--r-inner);
@@ -47,7 +54,8 @@
 .yellow {
     bottom: 0;
     left: 0;
-    background-color: yellow;
+    background-color: var(--yellow-dim);
+    box-shadow: var(--shadow-btn);
     border-top-left-radius: var(--r-inner);
     border-top-right-radius: var(--r-inner);
     border-bottom-right-radius: var(--r-inner);
@@ -57,7 +65,8 @@
 .blue {
     bottom: 0;
     right: 0;
-    background-color: blue;
+    background: var(--blue-dim);
+    box-shadow: var(--shadow-btn);
     border-top-left-radius: var(--r-inner);
     border-top-right-radius: var(--r-inner);
     border-bottom-right-radius: var(--r-outer);
@@ -80,4 +89,15 @@
     justify-content: center;
     box-shadow: 0 0 0 6px var(--color-surface), inset 0 2px 8px rgba(0, 0, 0, 0.5);
 
+}
+
+
+.round {
+    font-family: var(--font-game);
+    color: var(--color-text-faint);
+
+}
+
+.hidden {
+    display: none;
 }

@@ -49,14 +49,14 @@
 
       <!-- SIMON BOARD -->
       <main>
-        <p class="game-info hidden">Press the Start Button</p>
+        <p class="game-info">Press the Start Button</p>
         <section class="simon-board">
           <button class="green play-btn disabled"></button>
           <button class="red play-btn disabled"></button>
           <button class="yellow play-btn disabled"></button>
           <button class="blue play-btn disabled"></button>
           <div class="board-center disabled">
-            <span class="round hidden">0</span>
+            <span class="round">0</span>
           </div>
         </section>
 
@@ -66,6 +66,8 @@
         <!-- GAME SETTING TOGGLE -->
         <section class="game-settings">
           <p class="game-info">Settings</p>
+
+          <!-- CARD SPEED -->
           <label class="toggle-card" tabindex="0">
             <div class="toggle-info">
               <div class="toggle-icon">⏱️</div>
@@ -80,7 +82,9 @@
               <div class="toggle-thumb"></div>
             </div>
           </label>
-          <label class="toggle-card" tabindex="0">
+
+          <!-- CARD HELPER -->
+          <label class="toggle-card active" tabindex="0">
             <div class="toggle-info">
               <div class="toggle-icon">🛟</div>
               <div class="toggle-text">
@@ -89,7 +93,7 @@
               </div>
             </div>
             <div class="toggle-switch">
-              <input type="checkbox" />
+              <input type="checkbox" checked />
               <div class="toggle-track"></div>
               <div class="toggle-thumb"></div>
             </div>
@@ -97,7 +101,7 @@
         </section>
       </main>
 
-      <!-- GAME OVER -->
+      <!-- GAME OVER MODAL -->
     </div>
     <script src="./assets/js/toggle.js"></script>
   </body>

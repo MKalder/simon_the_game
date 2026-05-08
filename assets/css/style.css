@@ -61,6 +61,9 @@
     --r-outer: 48%;
     --r-inner: 8%;
 
+    /* SHADOW SIMON BUTTONS */
+    --shadow-btn: inset 0 4px 20px rgba(0, 0, 0, 0.4);
+
 
 
 

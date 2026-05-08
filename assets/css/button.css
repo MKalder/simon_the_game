@@ -14,3 +14,14 @@
     outline: none;
     background-color: var(--blue-lit);
 }
+
+.btn:hover {
+    background: #79c0ff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
+}
+
+/* TODO make it smoother */
+.btn:active {
+    transform: scale(0.85);
+}
