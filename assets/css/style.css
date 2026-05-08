@@ -33,6 +33,10 @@
     --transition-game: 120ms ease-out;
     --transition: 220ms cubic-bezier(0.16, 1, 0.3, 1);
 
+    /* TOGGLE COLORS */
+    --color-success: #3fb950;
+    --color-success-glow: rgba(63, 185, 80, 0.35);
+
 
     /* MAIN-FONT */
     --font-game: 'Orbitron', sans-serif;
