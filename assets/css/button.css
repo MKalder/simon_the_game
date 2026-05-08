@@ -1,4 +1,4 @@
-.btn {
+.btn.start-game {
     margin-top: 2rem;
     width: min(380px, calc(100vw - 3rem));
     padding: var(--space-3) var(--space-4);
@@ -15,13 +15,13 @@
     background-color: var(--blue-lit);
 }
 
-.btn:hover {
+.btn.start-game:hover {
     background: #79c0ff;
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
 }
 
 /* TODO make it smoother */
-.btn:active {
+.btn.start-game:active {
     transform: scale(0.85);
 }
