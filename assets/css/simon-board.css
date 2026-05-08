@@ -1,12 +1,18 @@
+.game-info {
+    margin: 2rem;
+    text-align: center;
+    color: var(--color-text);
+    letter-spacing: var(--letter-space);
+}
+
 .simon-board {
-    margin-top: 4.5rem;
+    /* margin-top: 2.5rem; */
     position: relative;
     width: min(380px, calc(100vw - 3rem));
     aspect-ratio: 1;
 }
 
 .play-btn {
-    border: 1px solid red;
     position: absolute;
     width: calc(50% - 6px);
     height: calc(50% - 6px);
@@ -22,40 +28,40 @@
     top: 0;
     left: 0;
     background-color: green;
-    border-top-left-radius: 48%;
-    border-top-right-radius: 8%;
-    border-bottom-right-radius: 8%;
-    border-bottom-left-radius: 8%;
+    border-top-left-radius: var(--r-outer);
+    border-top-right-radius: var(--r-inner);
+    border-bottom-right-radius: var(--r-inner);
+    border-bottom-left-radius: var(--r-inner);
 }
 
 .red {
     top: 0;
     right: 0;
     background-color: red;
-    border-top-left-radius: 8%;
-    border-top-right-radius: 48%;
-    border-bottom-right-radius: 8%;
-    border-bottom-left-radius: 8%;
+    border-top-left-radius: var(--r-inner);
+    border-top-right-radius: var(--r-outer);
+    border-bottom-right-radius: var(--r-inner);
+    border-bottom-left-radius: var(--r-inner);
 }
 
 .yellow {
     bottom: 0;
     left: 0;
     background-color: yellow;
-    border-top-left-radius: 8%;
-    border-top-right-radius: 8%;
-    border-bottom-right-radius: 8%;
-    border-bottom-left-radius: 48%;
+    border-top-left-radius: var(--r-inner);
+    border-top-right-radius: var(--r-inner);
+    border-bottom-right-radius: var(--r-inner);
+    border-bottom-left-radius: var(--r-outer);
 }
 
 .blue {
     bottom: 0;
     right: 0;
     background-color: blue;
-    border-top-left-radius: 8%;
-    border-top-right-radius: 8%;
-    border-bottom-right-radius: 48%;
-    border-bottom-left-radius: 8%;
+    border-top-left-radius: var(--r-inner);
+    border-top-right-radius: var(--r-inner);
+    border-bottom-right-radius: var(--r-outer);
+    border-bottom-left-radius: var(--r-inner);
 }
 
 .board-center {

@@ -39,6 +39,7 @@
     --font-body: 'Inter', sans-serif;
 
     /* SPACES */
+    --letter-space: 0.2rem;
     --radius-full: 9999px;
     --space-2: 0.5rem;
     --space-3: 0.75rem;
@@ -47,6 +48,12 @@
     --space-8: 2rem;
     --space-10: 2.5rem;
     --space-12: 3rem;
+
+
+
+    /* BUTTON ROUNDINGS SIMON BOARD */
+    --r-outer: 48%;
+    --r-inner: 8%;
 
 
 
