@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./assets/css/info-box.css" />
     <link rel="stylesheet" href="./assets/css/simon-board.css" />
     <link rel="stylesheet" href="./assets/css/game-settings.css" />
+    <link rel="stylesheet" href="./assets/css/button.css" />
   </head>
   <body>
     <div class="game-wrapper">
@@ -54,19 +55,38 @@
           <button class="red play-btn disabled"></button>
           <button class="yellow play-btn disabled"></button>
           <button class="blue play-btn disabled"></button>
-          <div class="board-center disabled"></div>
+          <div class="board-center disabled">
+            <span class="round hidden">0</span>
+          </div>
         </section>
 
-        <!-- GAME SETTINGS -->
+        <!-- GAME START / RESTART -->
+        <button class="btn start-game restart-game">Start</button>
+
+        <!-- GAME SETTING TOGGLE -->
         <section class="game-settings">
+          <p class="game-info">Settings</p>
           <label class="toggle-card" tabindex="0">
             <div class="toggle-info">
               <div class="toggle-icon">⏱️</div>
               <div class="toggle-text">
                 <span class="toggle-label">Speed-Modus</span>
-                <span class="toggle-desc">Normal Speed oder Turbo</span>
+                <span class="toggle-desc">Normal Speed or Turbo</span>
               </div>
-              <span class="toggle-badge badge-beta">Beta</span>
+            </div>
+            <div class="toggle-switch">
+              <input type="checkbox" />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </div>
+          </label>
+          <label class="toggle-card" tabindex="0">
+            <div class="toggle-info">
+              <div class="toggle-icon">🛟</div>
+              <div class="toggle-text">
+                <span class="toggle-label">Helper</span>
+                <span class="toggle-desc">Show Round Number</span>
+              </div>
             </div>
             <div class="toggle-switch">
               <input type="checkbox" />
@@ -77,7 +97,7 @@
         </section>
       </main>
 
-      <!-- Game settings -->
+      <!-- GAME OVER -->
     </div>
   </body>
 </html>
