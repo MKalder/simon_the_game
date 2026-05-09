@@ -8,7 +8,7 @@ export const state = {
     sequence: [],
     playerInput: [],
     timer: true,
-    timerTime: 5,
+    timerTime: 1250,
     speedMode: false,
     playing: false,
     gameOver: false
@@ -17,18 +17,23 @@ export const state = {
 const SECONDS = state.speedMode ? 500 : 1000;
 const litDuration = SECONDS * 0.6;
 const COLORS = ["green", "red", "yellow", "blue"];
+const TONES = { green: 329.6, red: 220, yellow: 261.6, blue: 164.8 };
+const gameInfo = document.querySelector(".game-info");
+const levelInfo = document.querySelector(".level>p");
+const startBtn = document.querySelector(".start-game");
+let sequenceClone;
 
 initPlayerButtons();
-
-const startBtn = document.querySelector(".start-game");
 
 startBtn.addEventListener("click", startGame);
 
 function startGame() {
 
     console.log("game start 🚀");
-    //playStartJingle();
+    //HOW TO DELAY THE START
+    playStartJingle();
     state.playing = true;
+    state.playerInput = [];
 
     // DISABLE SETTINGS
     document.querySelectorAll(".toggle-card").forEach(card => {
@@ -36,36 +41,60 @@ function startGame() {
         card.classList.add("disabled");
     });
 
-    // GAME LOOP
-    while (state.playing) {
+    round();
+}
 
-        //INFO TEXT UDATES
-        state.level = state.level + 1;
-        const gameInfo = document.querySelector(".game-info");
-        gameInfo.textContent = "Round " + state.level + " starts";
-        gameInfo.style.color = "var(--green-lit)";
+function round() {
 
-        // LEVEL UPDATE
-        const levelInfo = document.querySelector(".level>p");
-        levelInfo.textContent = state.level;
+    //INFO TEXT UDATES
+    state.level = state.level + 1;
+    gameInfo.textContent = "Round " + state.level + " starts";
+    gameInfo.style.color = "var(--green-lit)";
 
-        //CREATE PLAY SEQUENCE
-        simonSequence();
-        console.log(state.sequence);
-        simonSays();
+    //LEVEL UPDATE
+    levelInfo.textContent = state.level;
 
-        //PLAYER HAS TO REPLAY
-
-        // setTimeout(() => {
-        //     playerRepeat();
-        // }, 2000);
-
-        //UPDATE INFO GRAPHICS
-
-        state.playing = false;
-    }
+    //DELAYED START OF THE GAME
+    setTimeout(() => {
+        game();
+    }, 1000);
 
 }
+
+// GAME LOOP
+function game() {
+
+    if (!state.playing) return;
+
+    //INFO TEXT UDPADTE
+    gameInfo.textContent = "Watch and listen closely";
+    gameInfo.style.color = "var(--color-text-muted)";
+
+    //CREATE PLAY SEQUENCE
+    simonSequence();
+    console.log(state.sequence);
+    sequenceClone = [...state.sequence];
+    console.log(sequenceClone);
+
+    //SHOW SEQUENCE
+    simonSays();
+
+    //USER INPUT - COMPARING
+    const sequenceDuration = state.sequence.length * SECONDS + litDuration;
+
+    setTimeout(() => {
+        gameInfo.textContent = "Repeat what simon said";
+        gameInfo.style.color = "var(--blue-lit)";
+
+        buttonEnabled();
+
+        setTimeout(() => {
+            //COUNTDOWN
+        });
+
+    }, sequenceDuration);
+}
+
 
 function playStartJingle() {
     const notes = [261.6, 329.6, 440];
@@ -77,18 +106,18 @@ function playStartJingle() {
 }
 
 function simonSequence() {
-
     const randColor = Math.floor(Math.random() * 4);
     //console.log(randColor);
     state.sequence.push(COLORS[randColor]);
 }
 
 function simonSays() {
-    document.querySelectorAll(".play-btn").forEach(btn => {
-        btn.classList.add("disabled");
-    });
-    const TONES = { green: 329.6, red: 220, yellow: 261.6, blue: 164.8 };
 
+    //NO BUTTON CLICKS: 
+    buttonDisabled();
+
+
+    console.log("Length: " + state.sequence.length);
 
     for (let i = 0; i < state.sequence.length; i++) {
         let sound = TONES[state.sequence[i]];
@@ -102,9 +131,8 @@ function simonSays() {
 
         }, i * SECONDS);
     }
-    document.querySelectorAll(".play-btn").forEach(btn => {
-        btn.classList.remove("disabled");
-    });
+    // state.timerTime += 1000;
+    //console.log("Timer: " + state.timerTime);
 }
 
 function buttonLitOn(color) {
@@ -115,22 +143,62 @@ function buttonLitOff(color) {
     document.querySelector("." + color).classList.remove("lit");
 }
 
+function buttonDisabled() {
+    document.querySelectorAll(".play-btn").forEach(btn => {
+        btn.classList.add("disabled");
+    });
+}
+
+function buttonEnabled() {
+    document.querySelectorAll(".play-btn").forEach(btn => {
+        btn.classList.remove("disabled");
+    });
+}
 
 function initPlayerButtons() {
     const playBtn = document.querySelectorAll(".play-btn");
     playBtn.forEach((btn, i) => {
         btn.addEventListener("click", () => {
-            state.playerInput.push(i);
+            state.playerInput.push(COLORS[i]);
             console.log(state.playerInput);
             buttonLitOn(COLORS[i]);
+            playTone(TONES[COLORS[i]]);
 
             setTimeout(() => {
                 buttonLitOff(COLORS[i]);
             }, litDuration);
 
-            //compareSequence(); // direkt hier aufrufen
+            compareSequence(COLORS[i]);
         });
     });
 }
+
+
+function userRepeat() {
+
+}
+
+// TODO: UI adaptors (modal, info text, stats)
+
+function compareSequence(input) {
+
+    console.log("Compare Sequence: " + state.sequence);
+    console.log("Player Input: " + state.playerInput);
+
+    if (sequenceClone[0] === input) {
+        sequenceClone.shift();
+        console.log("CORRECT");
+        console.log(sequenceClone);
+    } else {
+        console.log("GAME OVER");
+    }
+
+    if (sequenceClone.length === 0) {
+        console.log("Next Round");
+        round();
+    }
+
+}
+
 
 
