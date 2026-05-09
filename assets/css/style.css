@@ -11,6 +11,7 @@
     --green-dim: #1a4a1a;
     --green-lit: #22dd44;
     --green-glow: rgba(34, 221, 68, 0.6);
+    --green-btn-hover: #79ff82;
 
     --red-dim: #4a1a1a;
     --red-lit: #ff3333;
@@ -23,6 +24,7 @@
     --blue-dim: #0a1a4a;
     --blue-lit: #3388ff;
     --blue-glow: rgba(51, 136, 255, 0.6);
+    --blue-btn-hover: #79c0ff;
 
     --color-surface: #161b22;
     --color-surface-2: #1c2128;

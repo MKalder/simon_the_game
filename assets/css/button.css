@@ -1,4 +1,4 @@
-.btn.start-game {
+.btn {
     margin-top: 2rem;
     width: min(380px, calc(100vw - 3rem));
     padding: var(--space-3) var(--space-4);
@@ -15,13 +15,33 @@
     background-color: var(--blue-lit);
 }
 
+.btn.start-game {
+    background-color: var(--blue-lit);
+}
+
 .btn.start-game:hover {
-    background: #79c0ff;
+    background: var(--blue-btn-hover);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
 }
 
 /* TODO make it smoother */
 .btn.start-game:active {
+    transform: scale(0.85);
+}
+
+/* RESTART BUTTON */
+.btn.restart-game {
+    background-color: var(--green-lit);
+}
+
+.btn.restart-game:hover {
+    background: var(--green-btn-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
+}
+
+/* TODO make it smoother */
+.btn.restart-game:active {
     transform: scale(0.85);
 }
