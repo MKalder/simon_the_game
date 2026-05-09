@@ -14,6 +14,12 @@ export const state = {
     gameOver: false
 }
 
+const SECONDS = state.speedMode ? 500 : 1000;
+const litDuration = SECONDS * 0.6;
+const COLORS = ["green", "red", "yellow", "blue"];
+
+initPlayerButtons();
+
 const startBtn = document.querySelector(".start-game");
 
 startBtn.addEventListener("click", startGame);
@@ -49,9 +55,14 @@ function startGame() {
         simonSays();
 
         //PLAYER HAS TO REPLAY
-        playerRepeat();
+
+        // setTimeout(() => {
+        //     playerRepeat();
+        // }, 2000);
 
         //UPDATE INFO GRAPHICS
+
+        state.playing = false;
     }
 
 }
@@ -66,16 +77,18 @@ function playStartJingle() {
 }
 
 function simonSequence() {
-    const COLORS = ["green", "red", "yellow", "blue"];
+
     const randColor = Math.floor(Math.random() * 4);
     //console.log(randColor);
     state.sequence.push(COLORS[randColor]);
 }
 
 function simonSays() {
+    document.querySelectorAll(".play-btn").forEach(btn => {
+        btn.classList.add("disabled");
+    });
     const TONES = { green: 329.6, red: 220, yellow: 261.6, blue: 164.8 };
-    const seconds = state.speedMode ? 500 : 1000;
-    const litDuration = seconds * 0.6;
+
 
     for (let i = 0; i < state.sequence.length; i++) {
         let sound = TONES[state.sequence[i]];
@@ -87,9 +100,11 @@ function simonSays() {
                 buttonLitOff(state.sequence[i]);
             }, litDuration);
 
-        }, i * seconds);
-
+        }, i * SECONDS);
     }
+    document.querySelectorAll(".play-btn").forEach(btn => {
+        btn.classList.remove("disabled");
+    });
 }
 
 function buttonLitOn(color) {
@@ -101,25 +116,21 @@ function buttonLitOff(color) {
 }
 
 
-
-
-
-
-
-
-
-function playerRepeat() {
-
-    //If timer than switch on
-
+function initPlayerButtons() {
     const playBtn = document.querySelectorAll(".play-btn");
     playBtn.forEach((btn, i) => {
         btn.addEventListener("click", () => {
             state.playerInput.push(i);
-            //compare function aufruf
+            console.log(state.playerInput);
+            buttonLitOn(COLORS[i]);
+
+            setTimeout(() => {
+                buttonLitOff(COLORS[i]);
+            }, litDuration);
+
+            //compareSequence(); // direkt hier aufrufen
         });
     });
-
 }
 
 
