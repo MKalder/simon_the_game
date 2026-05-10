@@ -24,35 +24,6 @@ document.querySelectorAll('.toggle-card').forEach(card => {
     });
 });
 
-// function toggleState(cardType, checkbox) {
-
-//     if (cardType === 'speed') {
-//         console.log("speed toogle");
-//         if (checkbox.checked) {
-//             playTone(600, 0.12);
-//             state.speedMode = true;
-//             console.log("Speed state: " + state.speedMode);
-//         } else {
-//             playTone(300, 0.12);
-//             state.speedMode = false;
-//             console.log("Speed state: " + state.speedMode);
-//         }
-//     }
-
-//     if (cardType === 'timer') {
-//         console.log("timer toogle");
-//         if (checkbox.checked) {
-//             playTone(600, 0.12);
-//             state.timer = true;
-//             console.log("Timer state: " + state.timer);
-//         } else {
-//             playTone(300, 0.12);
-//             state.timer = false;
-//             console.log("Timer state: " + state.timer);
-//         }
-//     }
-
-// }
 
 function toggleState(cardType, checkbox) {
     const isChecked = checkbox.checked;
@@ -68,6 +39,15 @@ function toggleState(cardType, checkbox) {
 
     playTone(isChecked ? 600 : 300, 0.12);
     state[stateKey] = isChecked;
+    console.log("SPEED MODER STATE: " + state.speedMode);
+    console.log("TIMER STATE: " + state.timer);
+
+    if (!state.timer) {
+        document.querySelector(".round").classList.add("hidden");
+    } else {
+        document.querySelector(".round").classList.remove("hidden");
+    }
 
     console.log(`${cardType} toggle → ${stateKey}: ${state[stateKey]}`);
 }
+

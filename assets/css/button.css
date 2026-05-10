@@ -15,33 +15,50 @@
     background-color: var(--blue-lit);
 }
 
-.btn.start-game {
+.start-game-btn {
     background-color: var(--blue-lit);
 }
 
-.btn.start-game:hover {
+.start-game-btn:hover {
     background: var(--blue-btn-hover);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
 }
 
 /* TODO make it smoother */
-.btn.start-game:active {
+.start-game-btn:active {
     transform: scale(0.85);
 }
 
-/* RESTART BUTTON */
-.btn.restart-game {
-    background-color: var(--green-lit);
+.start-game-btn.disabled {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.3);
+    /* Text sichtbarer machen */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* subtile Umrandung */
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
-.btn.restart-game:hover {
-    background: var(--green-btn-hover);
+.start-game-btn:disabled:active {
+    transform: none;
+}
+
+
+/* RESTART BUTTON */
+.btn.restart-btn {
+    background: var(--blue-btn-hover);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.btn.restart-btn:hover {
+    background: var(--blue-btn-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(88, 166, 255, 0.4);
+    box-shadow: var(--shadow-btn);
 }
 
 /* TODO make it smoother */
-.btn.restart-game:active {
+.btn.restart-btn:active {
     transform: scale(0.85);
 }

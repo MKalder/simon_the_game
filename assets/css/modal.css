@@ -1,5 +1,41 @@
 .overlay {
     position: fixed;
     inset: 0;
-    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2;
+}
+
+.modal {
+    position: relative;
+    /* oder fixed/absolute */
+    z-index: 3;
+    /* höher als overlay (z-index: 1) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* min() braucht mind. 2 Werte */
+}
+
+.modal h2 {
+    color: var(--red-lit);
+    font-family: var(--font-game);
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.modal p {
+    font-family: var(--font-game);
+}
+
+/* BUTTON IS IN button.css */
+
+.hidden {
+    display: none;
 }

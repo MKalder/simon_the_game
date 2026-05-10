@@ -34,7 +34,7 @@
       <section class="info-box">
         <div class="level info-element">
           <h2>Level</h2>
-          <p>-</p>
+          <p>0</p>
         </div>
         <div class="info-divider"></div>
         <div class="points info-element">
@@ -56,13 +56,13 @@
           <button class="red play-btn disabled"></button>
           <button class="yellow play-btn disabled"></button>
           <button class="blue play-btn disabled"></button>
-          <div class="board-center disabled">
+          <div class="board-center">
             <span class="round">0</span>
           </div>
         </section>
 
         <!-- GAME START / RESTART -->
-        <button class="btn start-game">Start</button>
+        <button class="btn start-game-btn">Start</button>
 
         <!-- GAME SETTING TOGGLE -->
         <section class="game-settings">
@@ -106,7 +106,14 @@
 
       <!-- GAME OVER MODAL -->
       <section class="game-over hidden">
-        <div class="overlay"></div>
+        <div class="overlay">
+          <div class="modal">
+            <h2>Game Over</h2>
+            <p>Total Rounds: <span class="total-rounds"></span></p>
+            <p>Total Points: <span class="highscore-modal"></span></p>
+            <button class="btn restart-btn">Restart</button>
+          </div>
+        </div>
       </section>
     </div>
     <script type="module" src="./assets/js/simon-game.js"></script>
