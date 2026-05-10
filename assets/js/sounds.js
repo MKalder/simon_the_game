@@ -1,4 +1,5 @@
 let audioCtx = null;
+const WRONG_FREQ = 100;
 
 function ensureAudio() {
     if (!audioCtx) audioCtx = new AudioContext();
@@ -23,6 +24,22 @@ export function playTone(freq, duration = 0.3) {
 
     osc.start(audioCtx.currentTime);
     osc.stop(audioCtx.currentTime + duration);
+}
+
+export function playWrong() {
+    ensureAudio();
+    [WRONG_FREQ, WRONG_FREQ * 0.9].forEach((f, i) => {
+        setTimeout(() => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.type = 'sawtooth';
+            osc.frequency.value = f;
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        }, i * 150);
+    });
 }
 
 

@@ -1,4 +1,4 @@
-import { playTone } from "./sounds.js";
+import { playTone, playWrong } from "./sounds.js";
 
 // STATEMANAGEMENT
 export const state = {
@@ -21,6 +21,8 @@ const TONES = { green: 329.6, red: 220, yellow: 261.6, blue: 164.8 };
 const gameInfo = document.querySelector(".game-info");
 const levelInfo = document.querySelector(".level>p");
 const startBtn = document.querySelector(".start-game");
+const playBtn = document.querySelectorAll(".play-btn");
+
 let sequenceClone;
 
 initPlayerButtons();
@@ -31,6 +33,7 @@ function startGame() {
 
     console.log("game start 🚀");
     //HOW TO DELAY THE START
+
     playStartJingle();
     state.playing = true;
     state.playerInput = [];
@@ -41,10 +44,10 @@ function startGame() {
         card.classList.add("disabled");
     });
 
-    round();
+    startRound();
 }
 
-function round() {
+function startRound() {
 
     //INFO TEXT UDATES
     state.level = state.level + 1;
@@ -144,38 +147,32 @@ function buttonLitOff(color) {
 }
 
 function buttonDisabled() {
-    document.querySelectorAll(".play-btn").forEach(btn => {
+    playBtn.forEach(btn => {
         btn.classList.add("disabled");
     });
 }
 
 function buttonEnabled() {
-    document.querySelectorAll(".play-btn").forEach(btn => {
+    playBtn.forEach(btn => {
         btn.classList.remove("disabled");
     });
 }
 
 function initPlayerButtons() {
-    const playBtn = document.querySelectorAll(".play-btn");
     playBtn.forEach((btn, i) => {
         btn.addEventListener("click", () => {
             state.playerInput.push(COLORS[i]);
             console.log(state.playerInput);
-            buttonLitOn(COLORS[i]);
-            playTone(TONES[COLORS[i]]);
+            if (compareSequence(COLORS[i])) {
+                buttonLitOn(COLORS[i]);
+                playTone(TONES[COLORS[i]]);
 
-            setTimeout(() => {
-                buttonLitOff(COLORS[i]);
-            }, litDuration);
-
-            compareSequence(COLORS[i]);
+                setTimeout(() => {
+                    buttonLitOff(COLORS[i]);
+                }, litDuration);
+            }
         });
     });
-}
-
-
-function userRepeat() {
-
 }
 
 // TODO: UI adaptors (modal, info text, stats)
@@ -189,16 +186,41 @@ function compareSequence(input) {
         sequenceClone.shift();
         console.log("CORRECT");
         console.log(sequenceClone);
+        return true;
     } else {
         console.log("GAME OVER");
+        gameOver();
+        return false;
     }
 
     if (sequenceClone.length === 0) {
         console.log("Next Round");
-        round();
+        startRound();
+        return false;
     }
 
 }
 
+function gameOver() {
+
+    buttonDisabled();
+    playWrong();
+    error();
+    //OPEN MODAL
+}
+
+function error() {
+    buttonDisabled();
+    playBtn.forEach(btn => {
+        btn.classList.add("error");
+    });
+    document.querySelector(".simon-board").classList.add("shake");
+}
+
+function resetGame() {
+
+
+
+}
 
 
